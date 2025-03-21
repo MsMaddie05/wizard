@@ -5,14 +5,11 @@ public class Wizard{
   private int health;
   private int mana;
   private boolean hasActed;
-  
-  //Ailments
-  private boolean 
 
   public Wizard(){
-     	name = "Logrith";
-      health = 100;
-      mana = 40;
+    name = "Logrith";
+    health = 100;
+    mana = 40;
   }
   
   public Wizard(String n, int h, int m){
@@ -20,16 +17,16 @@ public class Wizard{
     health = h; 
     mana = m; //currency baby
   }
-	
-  public String getName(){
+  
+  public final String getName(){
   	return name;
   }
   
-  public int getHealth(){
+  public final int getHealth(){
 		return health;
 	}
   
-  public int getMana(){
+  public final int getMana(){
   	return mana; 
   }
   
@@ -38,10 +35,10 @@ public class Wizard{
   	return this.name + " has " + this.health + " much health left. Additionally, they have " + this.mana + " mana left."; //works
   }
   
-  public void wait(int s){
+  public final void wait(int s){
       int timer = s * 1000;
       try{
-      	thread.sleep(timer); //pauses your code for (timer) amount of milliseconds
+      	Thread.sleep(timer); //pauses your code for (timer) amount of milliseconds
       }
       catch(InterruptedException e){
       	throw(e);
@@ -51,8 +48,4 @@ public class Wizard{
   public void dealDamage(int n){
   	this.health -= n; 
   }
-  
-  public void attack(Wizard w){
-  	
-    
-  }
+}
