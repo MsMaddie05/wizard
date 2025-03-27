@@ -1,11 +1,44 @@
 public class EnemyWizard extends Wizard {
 	
 	private int fireswordStacks; //to keep track of times hit by fire sword spell.
-	
+	private boolean isSkipped;
+	private int reverseBoostCount;
+	private int bigBangCount;
 	
 	public EnemyWizard() { //calls the default constructor.
 		super();
+		fireswordStacks = 0;
+		isSkipped = false;
+		reverseBoostCount = 0;
+		bigBangCount = 0;
 	}
+	//Accessors / Modifers
+	public void skip(){
+	    isSkipped = true;
+	    reverseBoostCount += 1;
+	}
+	
+	public int getReverseBoostCount(){
+	    return reverseBoostCount;
+	}
+	
+	public void addFireSwordStack(){
+	    fireswordStacks++;
+	}
+	
+	public int getFireSwordStacks(){
+	    return fireswordStacks;
+	}
+	
+	public void addBigBangCount(){
+	    bigBangCount++;
+	}
+	
+	public int getBigBangCount(){
+	    return bigBangCount;
+	}
+	
+	
 
 	//Enemy spells below:
 	public void potionSplash(PlayerWizard w) { //poisons PLAYER for next 2 terms
@@ -24,16 +57,18 @@ public class EnemyWizard extends Wizard {
 	}
 
 	public void turn(PlayerWizard w) { //PLAYER passed in
-        System.out.println("[[Enemy turn.]]");
+        if (!isSkipped){
+            System.out.println("[[Enemy turn.]]");    
+        }
+        
+        else{
+            System.out.println("Enemy turn skipped.");
+            isSkipped = false; //take it off since its only one time per turn.
+        }
+        
 	}
 	
-	public void addFireSwordStack(){
-	    fireswordStacks++;
-	}
 	
-	public int getFireSwordStacks(){
-	    return fireswordStacks;
-	}
 
 	public void attack(PlayerWizard w) { //Passes in PLAYER
 		int number = (int)(Math.random() * 3) + 1; //random num from 1-3
