@@ -11,13 +11,27 @@ public class Main {
 
 	failsafe = 0;
 
-	Wizard Player = new Wizard(name,100,40);
-	Wizard Enemy = new Wizard(); //default constructor. Name will always be "Logrith".
+	PlayerWizard Player = new PlayerWizard(name,100,40);
+	EnemyWizard Enemy = new EnemyWizard(); //default constructor. Name will always be "Logrith".
 
 	while(Player.getHealth() > 0 && Enemy.getHealth() > 0 && failsafe <= 10) {
 		Player.turn(Enemy); //player's turn. Passing in enemy as the target.
 		Enemy.turn(Player); //enemy's turn. Passing in player as the target.
-      		failsafe++;
+		
+		System.out.println("------------------------------------------------");
+      	System.out.println(Player);
+      	System.out.println("- - - - - - - - - - - - - - - -");
+      	System.out.println(Enemy);
+      	System.out.println("------------------------------------------------");
+      	failsafe++;
+      	
+      	if(Enemy.getHealth() < 0){
+  	        System.out.println("You win!!!\nGood Job, " + Player.getName() + "!!!");
+		}
+		
+		else if(Player.getHealth() < 0){
+		    System.out.println("You lose!!!\nBetter luck next time, " + Player.getName() + "...");
 		}
 	}
+}
 }
