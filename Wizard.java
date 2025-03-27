@@ -29,6 +29,14 @@ public class Wizard {
 	public final int getMana() {
 		return mana;
 	}
+	
+	public final void useMana(int n){
+	    this.mana -= n;
+	}
+	
+	public final void addHealth(int n){
+	    this.health+=n;
+	}
 
 	@Override //tag
 	public final String toString() { //System.out.println(Player);
@@ -46,6 +54,7 @@ public class Wizard {
 	}*/
 
 	public void dealDamage(int n) {
+		System.out.println(this.getName() + " takes " + n + " damage!");
 		this.health -= n;
 	}
 }
